@@ -1,0 +1,24 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "spfx-lb-hkthn-solution",
+    "componentType": "adaptiveCardExtension",
+    "aceTemplateType": "Image",
+    "componentName": "lb-view-db-card",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.20.2",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.12.0"
+    },
+    "version": "1.18.2",
+    "libraryName": "spfx-lb-hkthn-solution",
+    "libraryId": "2768852c-8a52-4a73-ba0a-ed963782301e",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionShortDescription": "spfx-lb-hkthn-solution description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  }
+}

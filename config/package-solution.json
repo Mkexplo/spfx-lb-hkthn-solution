@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spfx-lb-hkthn-solution-client-side-solution",
+    "id": "2768852c-8a52-4a73-ba0a-ed963782301e",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "spfx-lb-hkthn-solution description"
+      },
+      "longDescription": {
+        "default": "spfx-lb-hkthn-solution description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "spfx-lb-hkthn-solution Feature",
+        "description": "The feature that activates elements of the spfx-lb-hkthn-solution solution.",
+        "id": "9e3d5621-274b-4059-bab9-972dbd5b04a6",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-lb-hkthn-solution.sppkg"
+  }
+}
