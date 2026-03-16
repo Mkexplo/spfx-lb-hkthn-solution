@@ -2,11 +2,10 @@
   "@microsoft/generator-sharepoint": {
     "whichFolder": "subdir",
     "solutionName": "spfx-lb-hkthn-solution",
-    "componentType": "adaptiveCardExtension",
-    "aceTemplateType": "Image",
-    "componentName": "lb-view-db-card",
+    "componentType": "webpart",
+    "componentName": "lbEmpProfileWP",
     "plusBeta": false,
-    "isCreatingSolution": true,
+    "isCreatingSolution": false,
     "nodeVersion": "16.20.2",
     "sdksVersions": {
       "@microsoft/microsoft-graph-client": "3.0.2",
@@ -19,6 +18,7 @@
     "packageManager": "npm",
     "solutionShortDescription": "spfx-lb-hkthn-solution description",
     "skipFeatureDeployment": true,
-    "isDomainIsolated": false
+    "isDomainIsolated": false,
+    "template": "react"
   }
 }

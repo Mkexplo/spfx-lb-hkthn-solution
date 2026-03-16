@@ -23,6 +23,15 @@ export class CardView extends BaseImageCardView<
   public get cardButtons(): [ICardButton] | [ICardButton, ICardButton] | undefined {
     return [
       {
+        title: 'Next',
+        action: {
+          type: 'Submit',
+          parameters: {
+            id: 'nextUser'
+          }
+        }
+      },
+      {
         title: strings.QuickViewButton,
         action: {
           type: 'QuickView',
@@ -34,19 +43,70 @@ export class CardView extends BaseImageCardView<
     ];
   }
 
+  public onAction(action: any): void {
+    console.log('onAction triggered:', action);
+    
+    if (action.type === 'Submit' && action.data.id === 'nextUser') {
+      console.log('Next button clicked - navigating to next user');
+      
+      // Navigate to next user
+      const currentIndex = (this.state as any)?.currentUserIndex || 0;
+      const users = (this.state as any)?.users || [];
+      
+      console.log('Current index:', currentIndex);
+      console.log('Total users:', users.length);
+      
+      if (users.length === 0) {
+        console.warn('No users available');
+        return;
+      }
+
+      // Calculate next index (circular)
+      const nextIndex = (currentIndex + 1) % users.length;
+      
+      console.log('Moving to next index:', nextIndex);
+      
+      // Update state with next user index
+      this.setState({
+        currentUserIndex: nextIndex
+      } as ILbViewDbCardAdaptiveCardExtensionState);
+    }
+  }
+
   public get data(): IImageCardParameters {
+    // Get current user index from state, default to 0
+    const currentIndex = (this.state as any)?.currentUserIndex || 0;
+    let users = (this.state as any)?.users || [];
+    
+    // If users is empty, try to fetch from state or use empty array
+    if (users.length === 0) {
+      console.warn('Users array is empty in state');
+      users = [];
+    }
+    
+    // Get current user
+    const currentUser = users.length > 0 ? users[currentIndex] : null;
+    
+    // Get avatar URL from user object (already fetched)
+    const avatarUrl = currentUser?.avatarUrl || require('../assets/MicrosoftLogo.png');
+    const screenName = currentUser?.ScreenName || 'Employee Profile';
+
+    console.log('Current user:', currentUser);
+    console.log('Avatar URL:', avatarUrl);
+    console.log('Total users:', users.length);
+
     return {
-      primaryText: strings.PrimaryText,
-      imageUrl: require('../assets/MicrosoftLogo.png'),
+      primaryText: screenName,
+      imageUrl: avatarUrl,
       title: this.properties.title
     };
   }
 
   public get onCardSelection(): IQuickViewCardAction | IExternalLinkCardAction | undefined {
     return {
-      type: 'ExternalLink',
+      type: 'QuickView',
       parameters: {
-        target: 'https://www.bing.com'
+        view: QUICK_VIEW_REGISTRY_ID
       }
     };
   }

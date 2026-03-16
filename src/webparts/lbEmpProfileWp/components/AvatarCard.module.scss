@@ -1,0 +1,29 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.avatarCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.avatarImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.screenNameContainer {
+  text-align: center;
+  width: 100%;
+}
+
+.screenName {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(157, 78, 221);
+  margin: 0;
+  padding: 0;
+  word-break: break-word;
+}

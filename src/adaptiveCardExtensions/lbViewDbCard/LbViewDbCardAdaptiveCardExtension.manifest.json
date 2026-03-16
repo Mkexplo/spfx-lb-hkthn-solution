@@ -21,7 +21,7 @@
     "iconImageUrl": "https://res.cdn.office.net/files/fabric-cdn-prod_20230308.001/assets/brand-icons/product-monoline/svg/vivaconnections_32x1.svg",
     "cardSize": "Large",
     "properties": {
-      "title": "lb-view-db-card",
+      "title": "Lunch Connect",
       "description": "lb-view-db-card description",
       "iconProperty": "" // Default to MicrosoftLogo.png
     }

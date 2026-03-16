@@ -9,11 +9,20 @@
           "manifest": "./src/adaptiveCardExtensions/lbViewDbCard/LbViewDbCardAdaptiveCardExtension.manifest.json"
         }
       ]
+    },
+    "lb-emp-profile-wp-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/lbEmpProfileWp/LbEmpProfileWpWebPart.js",
+          "manifest": "./src/webparts/lbEmpProfileWp/LbEmpProfileWpWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
     "LbViewDbCardAdaptiveCardExtensionStrings": "lib/adaptiveCardExtensions/lbViewDbCard/loc/{locale}.js",
-    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "LbEmpProfileWpWebPartStrings": "lib/webparts/lbEmpProfileWp/loc/{locale}.js"
   }
 }

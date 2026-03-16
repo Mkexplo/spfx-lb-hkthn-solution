@@ -6,23 +6,103 @@
     {
       "type": "TextBlock",
       "weight": "Bolder",
-      "text": "${title}"
+      "size": "Large",
+      "text": "Employee Profile"
     },
     {
-      "type": "ColumnSet",
-      "columns": [
+      "type": "TextBlock",
+      "separator": true,
+      "spacing": "Medium"
+    },
+    {
+      "type": "Container",
+      "style": "emphasis",
+      "items": [
         {
-          "type": "Column",
-          "items": [
+          "type": "ColumnSet",
+          "columns": [
             {
-              "type": "TextBlock",
-              "weight": "Bolder",
-              "text": "${subTitle}",
-              "wrap": true
+              "width": "stretch",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "weight": "Bolder",
+                  "text": "Screen Name"
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "${screenName}",
+                  "wrap": true,
+                  "spacing": "Small"
+                }
+              ]
+            },
+            {
+              "width": "auto",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "weight": "Bolder",
+                  "text": "Match Score"
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "${if(matchScore != null, string(matchScore) + '%', 'N/A')}",
+                  "wrap": true,
+                  "spacing": "Small",
+                  "color": "${if(matchScore >= 75, 'good', if(matchScore >= 50, 'warning', if(matchScore > 0, 'attention', 'light')))}",
+                  "weight": "Bolder",
+                  "size": "Large"
+                }
+              ]
             }
           ]
         }
       ]
+    },
+    {
+      "type": "TextBlock",
+      "weight": "Bolder",
+      "text": "Area of Interest",
+      "spacing": "Medium"
+    },
+    {
+      "type": "TextBlock",
+      "text": "${areaOfInterest}",
+      "wrap": true,
+      "spacing": "Small"
+    },
+    {
+      "type": "TextBlock",
+      "weight": "Bolder",
+      "text": "Hobbies",
+      "spacing": "Medium"
+    },
+    {
+      "type": "TextBlock",
+      "text": "${hobbies}",
+      "wrap": true,
+      "spacing": "Small"
+    },
+    {
+      "type": "TextBlock",
+      "weight": "Bolder",
+      "text": "About",
+      "spacing": "Medium"
+    },
+    {
+      "type": "TextBlock",
+      "text": "${about}",
+      "wrap": true,
+      "spacing": "Small"
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "${joinButtonText}",
+      "id": "joinUser",
+      "enabled": "${joinButtonEnabled}"
     }
   ]
 }
