@@ -64,8 +64,11 @@ export const updateUserAvatarId = async (context: WebPartContext, userEmail: str
     
     const updateUrl = `https://ygc8n.sharepoint.com/sites/OneIntranet/_api/web/lists/getbytitle('RegisteredUsers')/items(${userRecord.ID})`;
     const body = JSON.stringify({
-      AvatarID: avatarId
+      avatarIDId: avatarId
     });
+    
+    console.log('Updating avatar with URL:', updateUrl);
+    console.log('Body:', body);
     
     const response = await context.spHttpClient.post(updateUrl, SPHttpClient.configurations.v1, {
       headers: {
@@ -80,7 +83,8 @@ export const updateUserAvatarId = async (context: WebPartContext, userEmail: str
       console.log('Avatar ID updated successfully');
       return true;
     } else {
-      console.error('Failed to update avatar ID:', response.status);
+      const errorText = await response.text();
+      console.error('Failed to update avatar ID:', response.status, errorText);
       return false;
     }
   } catch (error) {

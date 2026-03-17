@@ -21,8 +21,8 @@ export class QuickView extends BaseAdaptiveCardQuickView<
   ILbViewDbCardAdaptiveCardExtensionState,
   IQuickViewData
 > {
-  private matchScoreFetched: boolean = false;
-  private matchScoreCache: number | null = null;
+  private matchScore: number | null = null;
+  private lastFetchedUserEmail: string | null = null;
 
   public get data(): IQuickViewData {
     // Get current user from state
@@ -34,10 +34,10 @@ export class QuickView extends BaseAdaptiveCardQuickView<
     const aboutText = currentUser?.About || '';
     const firstLineAbout = aboutText.split('\n')[0] || '';
 
-    // Fetch match score if not already fetched
-    if (!this.matchScoreFetched && currentUser) {
-      this.matchScoreFetched = true;
-      this.fetchAndCacheMatchScore(currentUser);
+    // Fetch match score if user changed
+    if (currentUser && currentUser.Email !== this.lastFetchedUserEmail) {
+      this.lastFetchedUserEmail = currentUser.Email;
+      this.fetchMatchScore(currentUser);
     }
 
     return {
@@ -45,13 +45,13 @@ export class QuickView extends BaseAdaptiveCardQuickView<
       areaOfInterest: currentUser?.AreaOfInterest || 'N/A',
       hobbies: currentUser?.Hobbies || 'N/A',
       about: firstLineAbout,
-      matchScore: this.matchScoreCache,
+      matchScore: this.matchScore,
       joinButtonText: 'Join',
       joinButtonEnabled: true
     };
   }
 
-  private async fetchAndCacheMatchScore(currentUser: any): Promise<void> {
+  private async fetchMatchScore(currentUser: any): Promise<void> {
     try {
       // Get logged-in user email from context
       const loggedInUserEmail = (this.context as any)?.pageContext?.user?.loginName || 
@@ -59,33 +59,46 @@ export class QuickView extends BaseAdaptiveCardQuickView<
 
       if (!loggedInUserEmail || !currentUser.Email) {
         console.log('Unable to determine user emails for match score fetch');
+        this.matchScore = null;
         return;
       }
 
       console.log('Fetching match score for:', loggedInUserEmail, '->', currentUser.Email);
 
       // Fetch match score from UserInteractions list
-      const matchScore = await getMatchScoreFromUserInteractions(
+      const score = await getMatchScoreFromUserInteractions(
         this.context,
         loggedInUserEmail,
         currentUser.Email
       );
 
-      if (matchScore !== null) {
-        console.log('Match score fetched:', matchScore);
-        this.matchScoreCache = matchScore;
+      if (score !== null) {
+        console.log('Match score fetched:', score);
+        this.matchScore = score;
       } else {
         console.log('No existing match score found');
-        this.matchScoreCache = null;
+        this.matchScore = null;
       }
     } catch (error) {
       console.error('Error fetching match score:', error);
-      this.matchScoreCache = null;
+      this.matchScore = null;
     }
   }
 
   public get template(): ISPFxAdaptiveCard {
     return require('./template/QuickViewTemplate.json');
+  }
+
+  public async onLoad(): Promise<void> {
+    // Fetch match score when QuickView loads
+    console.log('QuickView onLoad called');
+    const currentIndex = (this.state as any)?.currentUserIndex || 0;
+    const users = (this.state as any)?.users || [];
+    const currentUser = users.length > 0 ? users[currentIndex] : null;
+
+    if (currentUser) {
+      await this.fetchMatchScore(currentUser);
+    }
   }
 
   public async onAction(action: any): Promise<void> {

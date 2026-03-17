@@ -46,6 +46,13 @@ export class CardView extends BaseImageCardView<
   public onAction(action: any): void {
     console.log('onAction triggered:', action);
     
+    // Handle card click - navigate to LunchConnect page
+    if (action.type === 'QuickView' && action.data?.view === QUICK_VIEW_REGISTRY_ID) {
+      console.log('Card clicked - navigating to LunchConnect page');
+      window.location.href = 'https://ygc8n.sharepoint.com/sites/OneIntranet/SitePages/LunchConnect.aspx';
+      return;
+    }
+    
     if (action.type === 'Submit' && action.data.id === 'nextUser') {
       console.log('Next button clicked - navigating to next user');
       
@@ -103,11 +110,6 @@ export class CardView extends BaseImageCardView<
   }
 
   public get onCardSelection(): IQuickViewCardAction | IExternalLinkCardAction | undefined {
-    return {
-      type: 'QuickView',
-      parameters: {
-        view: QUICK_VIEW_REGISTRY_ID
-      }
-    };
+    return undefined;
   }
 }
