@@ -2,8 +2,9 @@
 
 ## Summary
 
-Short summary on functionality and used technologies.
+Lunch Connect is an employee engagement platform built with SharePoint Framework (SPFx) and enhanced by AI integration. Designed to foster collaboration and break down silos, the application helps employees discover and connect with lunch buddies across the organization. By leveraging custom SPFx web parts and adaptive card extensions, Lunch Connect seamlessly integrates into the Microsoft 365 ecosystem, offering a familiar and intuitive user experience.
 
+What sets Lunch Connect apart is its connection to the OpenAI model, which provides intelligent insights to match employees based on shared interests, hobbies, and subject matter expertise. This AI‑driven matchmaking not only encourages social interaction but also promotes cross‑team collaboration, knowledge sharing, and stronger workplace relationships.
 [picture of the solution in action, if possible]
 
 ## Used SharePoint Framework Version
