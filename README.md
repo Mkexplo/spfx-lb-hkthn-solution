@@ -6,13 +6,29 @@ Lunch Connect is an employee engagement platform built with SharePoint Framework
 
 What sets Lunch Connect apart is its connection to the OpenAI model, which provides intelligent insights to match employees based on shared interests, hobbies, and subject matter expertise. This AI‑driven matchmaking not only encourages social interaction but also promotes cross‑team collaboration, knowledge sharing, and stronger workplace relationships.
 
-<img width="1982" height="1114" alt="image" src="https://github.com/user-attachments/assets/334829d8-e8c1-4dc1-9a10-4268afb96de1" />
+<img width="1212" height="592" alt="image" src="https://github.com/user-attachments/assets/f66a21e4-0949-453c-8d81-3ba87069577c" />
+
 
 
 <img width="1838" height="1044" alt="image" src="https://github.com/user-attachments/assets/530a81c4-2525-4f51-a034-9d9ed0c4d6bb" />
 
+Lunch Connect Dashbaord tile in Viva Connection Dashboard - Adaptive Card Extensions
 
-## Used SharePoint Framework Version
+<img width="1212" height="592" alt="image" src="https://github.com/user-attachments/assets/4472d909-b507-445a-8e4e-af7754c225f0" />
+
+
+
+
+##Specifications
+SharePoint Framework : 1.18.2
+Node : 16.20.2
+OpenAI Model : o4-mini
+
+##Tools used
+VS code
+Microsoft Foundry
+Github Copilot
+
 
 ![version](https://img.shields.io/badge/version-1.18.2-green.svg)
 
