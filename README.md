@@ -16,7 +16,8 @@ Employee Profile screen - SPFx Webpart
 
 Lunch Connect Dashbaord tile in Viva Connection Dashboard - Adaptive Card Extensions
 
-<img width="1212" height="592" alt="image" src="https://github.com/user-attachments/assets/4472d909-b507-445a-8e4e-af7754c225f0" />
+<img width="616" height="308" alt="image" src="https://github.com/user-attachments/assets/8c17dd9b-1e96-4fb3-be1c-295b81f1ad04" />
+
 
 
 
